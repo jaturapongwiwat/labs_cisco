@@ -1,0 +1,20 @@
+ISP> enable
+ISP# configure terminal
+
+ISP(config)# hostname ISP
+
+ISP(config)# interface gigabitEthernet 0/0
+ISP(config-if)# ip address 203.0.113.1 255.255.255.252
+ISP(config-if)# no shutdown
+ISP(config-if)# exit
+
+ISP(config)# interface loopback 0
+ISP(config-if)# ip address 8.8.8.8 255.255.255.255
+ISP(config-if)# exit
+
+ISP(config)# end
+
+ISP# show ip interface brief
+ISP# show ip route
+
+ISP# write memory

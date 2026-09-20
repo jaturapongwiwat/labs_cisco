@@ -1,0 +1,31 @@
+Switch> enable
+Switch# configure terminal
+Switch(config)# hostname SW1
+
+SW1(config)# vlan 10
+SW1(config-vlan)# name OFFICE
+SW1(config-vlan)# exit
+
+SW1(config)# vlan 20
+SW1(config-vlan)# name IT
+SW1(config-vlan)# exit
+
+SW1(config)# interface range fa0/1-2
+SW1(config-if-range)# switchport mode access
+SW1(config-if-range)# switchport access vlan 10
+SW1(config-if-range)# exit
+
+SW1(config)# interface range fa0/3-4
+SW1(config-if-range)# switchport mode access
+SW1(config-if-range)# switchport access vlan 20
+SW1(config-if-range)# exit
+
+SW1(config)# interface fa0/24
+SW1(config-if)# switchport mode trunk
+SW1(config-if)# exit
+
+SW1(config)# end
+----
+SW1# show vlan brief
+SW1# show interfaces trunk
+----
